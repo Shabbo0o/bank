@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-// import RootLayout from "../layout";
 
 export default function Login() {
     const [username, setUsername] = useState("");
@@ -11,8 +10,7 @@ export default function Login() {
     const handleLogin = async (e) => {
         e.preventDefault();
 
-
-        const awshost = "http://ec2-51-20-132-235.eu-north-1.compute.amazonaws.com:4000"
+        const awshost = "http://ec2-51-20-132-235.eu-north-1.compute.amazonaws.com:4000";
         const localhost = "http://localhost:4000";
 
         try {
@@ -30,18 +28,18 @@ export default function Login() {
             const data = JSON.parse(text); // Parse JSON manually
     
             if (response.ok) {
-                localStorage.setItem("token", data.token);
+                localStorage.setItem("token", data.token); // Store token in localStorage
                 alert("Login successful! Redirecting...");
-                router.push("/account");
+                router.push("/account"); // Redirect to the account page
             } else {
-                alert(data.message);
+                alert(data.message); // Alert the user if login fails
             }
         } catch (error) {
             console.error("Error logging in:", error);
             alert("Login failed. Please check the console for details.");
         }
     };
-    
+
     return (
         <>
             <h1 className="text-2xl font-bold mb-4">Login</h1>
@@ -54,7 +52,7 @@ export default function Login() {
                 className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 
                 <button type="submit" className="w-full bg-blue-500 text-white font-semibold py-3 rounded-lg hover:bg-blue-600 transition">
-                Log In
+                    Log In
                 </button>
             </form>
         </>
