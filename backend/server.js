@@ -38,7 +38,7 @@ const pool = mysql.createPool({
     password: "Shabboo#123",
     host: "localhost",
     database: "bank",
-    port: 3306, //????? 8889
+    port: 3306, 
 });
 
 // Query function to run SQL queries
@@ -62,7 +62,6 @@ if (existingUser.length === 0) {
 }
 
 // Middleware
-// const cors = require("cors");
 
 app.use(cors());
 app.use(bodyParser.json());
